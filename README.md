@@ -2,8 +2,6 @@
 
 A UNCC Capstone Visualization
 
-test 
-
 Team Members:
 Hunter Turner
 Roc Barone
