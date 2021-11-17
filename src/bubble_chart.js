@@ -41,22 +41,57 @@ function bubbleChart() {
   // Locations of the college titles when the bubbles are split
   var collegeTitles = {
     //top and bottom group of bubbles
-    'Belk College of Business': { x: 570, y: 100 },
-    'College of Arts + Architecture': { x: 580, y: 1120 },
+    'Belk College of Business': { x: 570, y: 100, 
+      category: 'Belk College of Business<br>', 
+      description: "UNC Charlotte's Belk <br> College of Business has been <br> driving business in the Charlotte <br> region for over 50 years. <br> ",
+      link: "https://belkcollege.charlotte.edu/"
+    },
+    
+    'College of Arts + Architecture': { x: 580, y: 1120, 
+      category: 'Belk College of Business<br>', 
+      description: "UNC Charlotte's Belk <br> College of Business has been <br> driving business in the Charlotte <br> region for over 50 years. <br> ",
+      link: "https://belkcollege.charlotte.edu/"
+    },
 
     //left group of bubbles
-    'College of Computing & Informatics': { x: 70, y: 250 },
-    'College of Education': { x: 200, y: 1000 },
+    'College of Computing & Informatics': { x: 70, y: 250, 
+      category: 'Belk College of Business<br>', 
+      description: "UNC Charlotte's Belk <br> College of Business has been <br> driving business in the Charlotte <br> region for over 50 years. <br> ",
+      link: "https://belkcollege.charlotte.edu/"
+    },
+
+    'College of Education': { x: 200, y: 1000, 
+      category: 'Belk College of Business<br>', 
+      description: "UNC Charlotte's Belk <br> College of Business has been <br> driving business in the Charlotte <br> region for over 50 years. <br> ",
+      link: "https://belkcollege.charlotte.edu/"
+    },
 
     //very left group of bubbles
-    'College of Health & Human Services': { x: 50, y: 420 },
+    'College of Health & Human Services': { x: 50, y: 420, 
+      category: 'Belk College of Business<br>', 
+      description: "UNC Charlotte's Belk <br> College of Business has been <br> driving business in the Charlotte <br> region for over 50 years. <br> ",
+      link: "https://belkcollege.charlotte.edu/"
+    },
 
     //right groups of bubbles
-    'College of Liberal Arts & Sciences': { x: 1150, y: 250 },
-    'Lee College of Engineering': { x: 1140, y: 980 },
+    'College of Liberal Arts & Sciences': { x: 1150, y: 250, 
+      category: 'Belk College of Business<br>', 
+      description: "UNC Charlotte's Belk <br> College of Business has been <br> driving business in the Charlotte <br> region for over 50 years. <br> ",
+      link: "https://belkcollege.charlotte.edu/"
+    },
+    
+    'Lee College of Engineering': { x: 1140, y: 980, 
+      category: 'Belk College of Business<br>', 
+      description: "UNC Charlotte's Belk <br> College of Business has been <br> driving business in the Charlotte <br> region for over 50 years. <br> ",
+      link: "https://belkcollege.charlotte.edu/"
+    },
 
     //very right group of bubbles
-    'School of Data Science (SDS)': { x: 1120, y: 520 }
+    'School of Data Science (SDS)': { x: 1120, y: 520, 
+      category: 'Belk College of Business<br>', 
+      description: "UNC Charlotte's Belk <br> College of Business has been <br> driving business in the Charlotte <br> region for over 50 years. <br> ",
+      link: "https://belkcollege.charlotte.edu/"
+    }
   };
 
   // Strength to apply to the position forces (makes the bubbles move)
@@ -316,6 +351,16 @@ function bubbleChart() {
     simulation.alpha(1).restart();
   }
 
+  var TooltipCollege = d3.select("#vis")
+    .append("div")
+    .attr("class", "tooltip")
+    .style("opacity", 1)
+    .style("background-color", "white")
+    .style("border", "solid")
+   .style("border-width", "2px")
+    .style("border-radius", "5px")
+    .style("padding", "5px")
+
 
   //functionality for college button
   chart.toggleCollege = function () {
@@ -338,7 +383,15 @@ function bubbleChart() {
       //.attr('text-anchor', 'middle')
       .text(function (d) {
         return d;
-      });
+      })
+      .on("mouseover", function(d){
+        TooltipCollege
+        .html("<strong> Category: </strong>" + collegeTitles[d].category + "<strong> Description: </strong>" + collegeTitles[d].description +  '<a href= ' + collegeTitles[d].link + '>More Info</a>')
+        .transition().duration(500)
+            .style("opacity", 1)
+            .style("left", (d3.event.pageX +28) + "px")
+            .style("top", (d3.event.pageY ) + "px")
+      })
 
     //FORCES TO MAKE THE BUBBLES SPLIT
     // @v4 Reset the 'x' force to draw the bubbles to their year centers
