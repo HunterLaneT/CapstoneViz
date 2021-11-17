@@ -392,6 +392,11 @@ function bubbleChart() {
             .style("left", (d3.event.pageX +28) + "px")
             .style("top", (d3.event.pageY ) + "px")
       })
+      .on("mouseout", function(d){
+        TooltipCollege
+        .transition().duration(4000)
+        .style("opacity", 0)
+      })
 
     //FORCES TO MAKE THE BUBBLES SPLIT
     // @v4 Reset the 'x' force to draw the bubbles to their year centers
