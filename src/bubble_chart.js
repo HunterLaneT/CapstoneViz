@@ -13,10 +13,6 @@ function bubbleChart() {
   var width = 1450;
   var height = 1200;
 
-  // // tooltip for mouseover functionality
-  // var tooltip = floatingTooltip('gates_tooltip', 240);
-
-
   // Locations to move bubbles towards when all the bubbles need to be combined
   var center = { x: width / 2, y: height / 2 };
 
@@ -40,7 +36,6 @@ function bubbleChart() {
     //very right group of bubbles
     'School of Data Science (SDS)': { x: 950, y: height / 2 }
   };
-
 
 
   // Locations of the college titles when the bubbles are split
@@ -253,9 +248,6 @@ function bubbleChart() {
           .style("opacity", 0)
       })
 
-    // .on('mouseover', showDetail)
-    // .on('mouseout', hideDetail);
-
     // Merge the original empty selection and the enter selection
     bubbles = bubbles.merge(bubblesE)
 
@@ -324,65 +316,6 @@ function bubbleChart() {
     simulation.alpha(1).restart();
   }
 
-
-  // /*
-  //  * Function called on mouseover to display the
-  //  * details of a bubble in the tooltip.
-  //  */
-  // function showDetail(d) {
-  //   // change outline to indicate hover state.
-  //   d3.select(this).attr('stroke', 'black');
-
-  //   var content = '<span class="name">Title: </span><span class="value">' +
-  //                 d.name +
-  //                 '</span><br/>' +
-  //                 '<span class="name">Amount: </span><span class="value">$' +
-  //                 addCommas(d.value) +
-  //                 '</span><br/>' +
-  //                 '<span class="name">Year: </span><span class="value">' +
-  //                 d.college +
-  //                 '</span>';
-
-  //   tooltip.showTooltip(content, d3.event);
-  // }
-
-  // /*
-  //  * Hides tooltip
-  //  */
-  // function hideDetail(d) {
-  //   // reset outline
-  //   d3.select(this)
-  //     .attr('stroke', d3.rgb(fillColor(d.college)).darker());
-
-  //   tooltip.hideTooltip();
-  // }
-
-  // /*
-  //  * Externally accessible function (this is attached to the
-  //  * returned chart function). Allows the visualization to toggle
-  //  * between "single group" and "split by year" modes.
-  //  *
-  //  * displayName is expected to be a string and either 'year' or 'all'.
-  //  */
-  // chart.toggleDisplay = function (displayName) {
-  //   if (displayName === 'year') {
-  //     //showYearTitles();
-
-  //     // @v4 Reset the 'x' force to draw the bubbles to their year centers
-  //     simulation.force('x', d3.forceX().strength(forceStrength).x(nodeYearPos));
-
-  //     // @v4 We can reset the alpha value and restart the simulation
-  //     simulation.alpha(1).restart();
-  //   } else {
-  //     hideYearTitles();
-
-  //     // @v4 Reset the 'x' force to draw the bubbles to the center.
-  //     simulation.force('x', d3.forceX().strength(forceStrength).x(center.x));
-
-  //     // @v4 We can reset the alpha value and restart the simulation
-  //     simulation.alpha(1).restart();
-  //   }
-  // }
 
   //functionality for college button
   chart.toggleCollege = function () {
@@ -459,29 +392,6 @@ function display(error, data) {
 /*
  * Sets up the layout buttons to allow for toggling between view modes.
  */
-function setupButtons() {
-  d3.select('#toolbar')
-    .selectAll('.button')
-    .on('click', function () {
-      // Remove active class from all buttons
-      d3.selectAll('.button').classed('active', false);
-      // Find the button just clicked
-      var button = d3.select(this);
-
-      // Set it as the active button
-      button.classed('active', true);
-
-      // Get the id of the button
-      var buttonId = button.attr('id');
-
-      // Toggle the bubble chart based on the currently clicked button.
-      myBubbleChart.toggleDisplay(buttonId);
-    });
-}
-
-/*
- * Sets up the layout buttons to allow for toggling between view modes.
- */
 //allows for the button to be clicked and filter through the options
 function setupActualButtons() {
   d3.select('#college')
@@ -501,24 +411,8 @@ function setupActualButtons() {
     });
 }
 
-// /*
-//  * Helper function to convert a number into a string
-//  * and add commas to it to improve presentation.
-//  */
-// function addCommas(nStr) {
-//   nStr += '';
-//   var x = nStr.split('.');
-//   var x1 = x[0];
-//   var x2 = x.length > 1 ? '.' + x[1] : '';
-//   var rgx = /(\d+)(\d{3})/;
-//   while (rgx.test(x1)) {
-//     x1 = x1.replace(rgx, '$1' + ',' + '$2');
-//   }
-
-//   return x1 + x2;
-// }
 
 // Load the data.
-d3.csv('data/dataFinal.csv', display);
+d3.csv('data/OfficialCharlotteData.csv', display);
 
 setupActualButtons();
