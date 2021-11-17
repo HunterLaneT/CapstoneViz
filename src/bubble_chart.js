@@ -137,7 +137,7 @@ function bubbleChart() {
   function createNodes(rawData) {
     // Sizes bubbles based on area.
     var radiusScale = d3.scalePow()
-      .exponent(0.5)
+      .exponent(0.6)
       .domain([1, 300])
       .range([5, 150]);
 
