@@ -197,7 +197,7 @@ function bubbleChart() {
     var Tooltip = d3.select('#vis')
       .append("div")
       .attr("class", "tooltip")
-      .style("opacity", 1)
+      .style("opacity", 0)
       .style("background-color", "white")
       .style("border", "solid")
       .style("border-width", "2px")
@@ -231,7 +231,6 @@ function bubbleChart() {
             return d.radius + 5
           })
           .style("stroke", "black")
-        console.log(d)
 
         Tooltip
           .html("Name: " + d.name + "<br>College: " + d.college + "<br>Total Publication: " + d.value)
@@ -520,6 +519,6 @@ function setupActualButtons() {
 // }
 
 // Load the data.
-d3.csv('data/charlotteData1.csv', display);
+d3.csv('data/dataFinal.csv', display);
 
 setupActualButtons();
