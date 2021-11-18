@@ -45,4 +45,17 @@ svg {
   .footer {
     text-align: center;
   }
+
+  .axisWhite line{
+    stroke: white;
+  }
+  
+  .axisWhite  path{
+    stroke: white;
+  }
+  
+  .axisWhite  text{
+    fill: white;
+  }
+  
   
