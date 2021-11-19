@@ -132,7 +132,7 @@ function bubbleChart() {
   of the circle's associated data).
   This is done to allow for accurate collision
   detection with nodes of different sizes.
-  Charge is negative because we want nodes to repel.
+  Charge is negative because we want nodes to repel .
   */
   function charge(d) {
     return -Math.pow(d.radius + 1, 2.0) * forceStrength;
