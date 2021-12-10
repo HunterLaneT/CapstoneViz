@@ -1,0 +1,88 @@
+svg {
+    display: block;
+    margin: auto;
+  }
+  
+  #vis {
+    height: 900px;
+    clear: both;
+    margin-bottom: 10px;
+  }
+  
+  .college {
+    font-size: 21px;
+    fill: #aaa;
+    cursor: default;
+  }
+  
+  
+  .tooltip {
+      position: absolute;
+      top: 100px;
+      left: 100px;
+    -moz-border-radius:5px;
+      border-radius: 5px;
+    border: 2px solid #000;
+    background: #fff;
+      opacity: .9;
+    color: black;
+      padding: 10px;
+      width: 300px;
+      font-size: 12px;
+      z-index: 10;
+  }
+  
+  .tooltip .title {
+      font-size: 13px;
+  }
+  
+  .tooltip .name {
+    font-weight:bold;
+  }
+  
+  .footer {
+    text-align: center;
+  }
+
+  .axisWhite line{
+    stroke: white;
+  }
+  
+  .axisWhite  path{
+    stroke: white;
+  }
+  
+  .axisWhite  text{
+    fill: white;
+  }  
+
+  .college-name {
+    margin: 0 !important;
+    color: white;
+  }
+  
+  .key-dot {
+    display: inline-block;
+    height: 10px;
+    margin-right: .5em;
+    width: 10px;
+    
+  }
+  
+  .business { background: #f1da14; }
+  .architecture { background: #3ab988;}
+  .computing { background: #b8e04a;}
+  .education { background: #8cd646;}
+  .health { background: #2c909a;}
+  .sciences { background: #426697;}
+  .engineering { background: #523983;}
+  .dataScience { background: #c71575;}
+  
+  
+  #legend2{
+    overflow:hidden;
+  }
+  .legend2 {
+    float:left;
+    margin-right: 1em;
+  }

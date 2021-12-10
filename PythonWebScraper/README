@@ -1,0 +1,2 @@
+This file contains a python web scrapper for scraping information from the UNCC Faculty Connections site.
+The data it gathers is, the College name, Topic name, Count of people that contributed to the topic, and URL to the topic.
